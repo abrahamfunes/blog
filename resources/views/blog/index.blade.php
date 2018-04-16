@@ -21,7 +21,7 @@
                             <h1 class="title2">Bc2.mx</h1>
                         </div>
                         <div class="layer3 wow zoomInUp" data-wow-duration="2s" data-wow-delay="1s">
-                            <h2 class="title3">Noticias / Blog</h2>
+                            <h2 class="title3">@lang('blog.blog')</h2>
                         </div>
                     </div>
                 </div>
@@ -36,39 +36,48 @@
 <div class="blog-page area-padding">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                @include('layouts.layout-sidebar')
-            </div>
+            {{--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">--}}
+                {{--@include('layouts.layout-sidebar')--}}
+            {{--</div>--}}
             <!-- End left sidebar -->
             <!-- Start single blog -->
-            <div class="col-md-8 col-sm-8 col-xs-12">
+            <div class="col-md-12 col-sm-12 col-xs-12">
 
                     @if(isset($category->id) != "")
                     <div class="row">
-                        <div class="col-sm-12">
-                            Categoria Seleccionada: {{ $category->name }}
+                        <div class="col-sm-12 text-center">
+                            <h1>{{ $category->name }}</h1>
                         </div>
                     </div>
                     @endif
                     @foreach($posts as $post)
-                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <?php
+                            if(\App::getLocale() == 'en' && $post->title_en != ''){
+                                $post->title = $post->title_en;
+                                $post->content = $post->content_en;
+                            }elseif(\App::getLocale() == 'cn' && $post->title_cn != ''){
+                                $post->title = $post->title_cn;
+                                $post->content = $post->content_cn;
+                            }
+                        ?>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="single-blog">
                             <div class="single-blog-img" style="min-height: 220px; max-height: 220px">
-                                <a href="{{ route('blog.getPost', $post->title_slug) }}">
-                                    <img src="{{ ($post->file != "") ? $post->file->path : "/img/blog/1.jpg" }}" alt="" style="max-height: 224px">
+                                <a href="{{ route('blog.getPost', ['lang' => \App::getLocale(), 'post_id' => $post->id]) }}">
+                                    <img src="{{ ($post->file != "") ? $post->file->path : "/img/blog/1.jpg" }}" alt="" style="max-height: 224px; height: auto; width: 100%">
                                 </a>
                             </div>
                             <div class="blog-meta">
-                                <span class="comments-type"><i class="fa fa-comment-o"></i><a href="/#"> {{ $post->comments()->count()}} comentarios</a></span>
+                                <span class="comments-type"><i class="fa fa-comment-o"></i><a href="/#"> {{ $post->comments()->count()}} @lang('blog.comentarios')</a></span>
                                 <span class="date-type"><i class="fa fa-calendar"></i>{{ $post->created_at }}</span>
                             </div>
-                            <div class="blog-text" style="min-height: 90px; text-align: justify">
-                                <h4>
-                                    <a href="{{ route('blog.getPost', $post->title_slug) }}">{{ $post->title }}</a>
+                            <div class="blog-text" style="min-height: 150px; text-align: justify">
+                                <h4 style="min-height: 52px;">
+                                    <a href="{{ route('blog.getPost', ['lang' => \App::getLocale(), 'post_id' => $post->id]) }}">{{ substr($post->title, 0, 90) }} @if(strlen($post->title) > 90)...@endif</a>
                                 </h4>
-                                    {!! substr($post->content, 0, 150)  !!}...
+                                    {!! substr($post->content, 0, 145)  !!}...
                             </div>
-							<span><a href="{{ route('blog.getPost', $post->title_slug) }}" class="ready-btn">Continuar leyendo</a></span>
+							<span><a href="{{ route('blog.getPost', ['lang' => \App::getLocale(), 'post_id' => $post->id]) }}" class="ready-btn">@lang('blog.leer_mas')</a></span>
                         </div>
                     </div>
                     <!-- End single blog -->

@@ -10,7 +10,7 @@
                                     <img src="/img/logo/logo2.png" alt="">
                                 </a>
                             </div>
-                            <p>Redug Lagre dolor sit amet, consectetur adipisicing elit. Minima in nostrum, veniam. Esse est assumenda inventore, facere adipisci tenetur.</p>
+                            <p style="text-align: justify">@lang('blog.footer_bc2')</p>
                             <div class="footer-icons">
                                 <ul>
                                     <li>
@@ -42,14 +42,14 @@
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="footer-content">
                         <div class="footer-head">
-                            <h4>Mas información</h4>
+                            <h4>@lang('blog.mas_informacion')</h4>
                             <p>
-                                You can contact us our consectetur adipisicing elit.inventore, facere adipisci tenetur.
+                                @lang('blog.footer_masinfo')
                             </p>
                             <div class="footer-contacts">
-                                <p><span>Tel:</span> +52 (662) 301-31-45</p>
-                                <p><span>Correo:</span> info@bc2.mx</p>
-                                <p><span>Horario:</span> 9AM - 5PM</p>
+                                <p><span>@lang('blog.telefono'):</span> +52 (662) 301-31-45</p>
+                                <p><span>@lang('blog.correo'):</span> info@bc2.mx</p>
+                                <p><span>@lang('blog.horario'):</span> 9AM - 5PM</p>
                             </div>
                         </div>
                     </div>
@@ -58,10 +58,10 @@
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="footer-content">
                         <div class="footer-head">
-                            <h4>Publicaciones recientes</h4>
+                            <h4>@lang('blog.noticias_recientes')</h4>
                             <div class="flicker-img">
                                 @foreach($recents as $post)
-                                    <a href="{{ route('blog.getPost', $post->title_slug) }}" style="min-height: 96px; max-height: 96px ; min-width: 118px;">
+                                    <a href="{{ route('blog.getPost', ['lang' => \App::getLocale(), 'post_id' => $post->id]) }}" style="min-height: 96px; max-height: 96px ; min-width: 118px;">
                                         <img src="{{ ($post->file != null && $post->file->path != "") ? $post->file->path : '/img/portfolio/1.jpg' }}" alt="" style="max-height: 95px;">
                                     </a>
                                 @endforeach
@@ -81,7 +81,7 @@
                         <p>
                             Copyright © 2017
                             <a href="/"> bc2.mx</a>.
-                            Todos los derechos reservados
+                            @lang('blog.derechos')
                         </p>
                     </div>
                 </div>

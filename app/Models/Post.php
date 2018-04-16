@@ -34,11 +34,16 @@ class Post extends Model
 
     public $fillable = [
         'title',
+        'title_en',
+        'title_cn',
         'title_slug',
         'author_id',
         'category_id',
         'thumbnail_id',
+        'image_url',
         'content',
+        'content_en',
+        'content_cn',
         'status_id'
     ];
 

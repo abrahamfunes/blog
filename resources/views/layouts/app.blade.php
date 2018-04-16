@@ -113,6 +113,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.es.min.js"></script>
     <script src="/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
     <script src="/plugins/bootstrap-wysihtml5/locales/bootstrap-wysihtml5.es-ES.js"></script>
+    <script src="/plugins/bootstrap-wysihtml5/locales/bootstrap-wysihtml5.en-US.js"></script>
+    <script src="/plugins/bootstrap-wysihtml5/locales/bootstrap-wysihtml5.zh-CN.js"></script>
     <script type="text/javascript" src="/plugins/bootstrap-filestyle-1.2.1/src/bootstrap-filestyle.js"></script>
     <script src="{{ URL::asset('plugins/sweetalert2/sweetalert2-v2.min.js') }}"></script>
 
@@ -133,6 +135,34 @@
 
         $(".description").wysihtml5({
             locale: 'es-ES',
+            toolbar: {
+                "font-styles": false, //Font styling, e.g. h1, h2, etc. Default true
+                "emphasis": true, //Italics, bold, etc. Default true
+                "lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+                "html": false, //Button which allows you to edit the generated HTML. Default false
+                "link": false, //Button to insert a link. Default true
+                "image": false, //Button to insert an image. Default true,
+                "color": false, //Button to change color of font
+                "blockquote": true //Blockquote
+            }
+        });
+
+        $(".descriptionen").wysihtml5({
+            locale: 'en-US',
+            toolbar: {
+                "font-styles": false, //Font styling, e.g. h1, h2, etc. Default true
+                "emphasis": true, //Italics, bold, etc. Default true
+                "lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+                "html": false, //Button which allows you to edit the generated HTML. Default false
+                "link": false, //Button to insert a link. Default true
+                "image": false, //Button to insert an image. Default true,
+                "color": false, //Button to change color of font
+                "blockquote": true //Blockquote
+            }
+        });
+
+        $(".descriptioncn").wysihtml5({
+            locale: 'zh-CN',
             toolbar: {
                 "font-styles": false, //Font styling, e.g. h1, h2, etc. Default true
                 "emphasis": true, //Italics, bold, etc. Default true

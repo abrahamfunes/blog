@@ -7,6 +7,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    @yield('metas')
+
     <!-- favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/img/logo/favicon.ico">
     {{--<link rel="shortcut icon" href="/favicon.ico" />--}}
@@ -23,11 +25,19 @@
     .flicker-img{
         min-height: 95px;
     }
+    .navbar-nav>li>.dropdown-menu {
+        background-color: rgba(0, 0, 0, .75);
+    }
+
+    .navbar-nav>li>.dropdown-menu li {
+        display: block;
+    }
 </style>
     <script>
         window.Laravel = {!! json_encode([
                 'csrfToken' => csrf_token(),
             ]) !!};
+
     </script>
 
     <!-- all css here -->
@@ -104,15 +114,29 @@
 <!-- plugins js -->
 <script src="/js/plugins.js"></script>
 <!-- main js -->
-<script src="/js/main.js"></script>
+<script src="/js/main2.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
 
 <link rel="stylesheet" href="{{ asset('plugins/sweetalert/sweetalert.min.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css">
 <script src="{{ URL::asset('plugins/sweetalert/sweetalert.min.js') }}"></script>
 @include('sweet::alert')
 
 @yield('styles')
 
 @yield('scripts')
+
+<script>
+    $(function(){
+        $('.selectpicker').selectpicker();
+
+        $('#country').change(function(e) {
+            //alert('{{ substr(\Request::path(),2) }}');
+            window.location = '/'+$(this).val()+'{{ substr(\Request::path(),2) }}';
+        });
+    });
+</script>
 </body>
 
 </html>

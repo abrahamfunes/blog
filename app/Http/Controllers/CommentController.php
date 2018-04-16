@@ -10,7 +10,9 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Models\Post;
+use App\Models\Category;
 use Response;
+use Lang;
 
 class CommentController extends AppBaseController
 {
@@ -73,9 +75,14 @@ class CommentController extends AppBaseController
 
         $post = Post::whereId($input['post_id'])->first();
 
-        alert()->success("Su comentario se ha ingresado.", 'Gracias')->persistent("Ok");
+        $category = Category::whereStatusId(1)->whereId($post->category_id)->first();
 
-        return redirect(route('blog.getPost', ['title_slug' => $post->title_slug."#comments"]));
+        \App::setLocale($request->lang);
+
+
+        alert()->success(Lang::get('blog.mensajecomentario'), Lang::get('blog.gracias'))->persistent("Ok");
+
+        return redirect(route('blog.getPost', ['lang'=> $input['lang'], 'category_name' => $category->name, 'id' => $post->id."#comments"]));
     }
 
     /**

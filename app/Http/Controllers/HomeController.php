@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        #$this->middleware('auth');
     }
 
     /**
@@ -23,7 +23,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data['posts'] = \DB::table('posts')->where('status_id',1)->count();
+        $data['posts_es'] = \DB::table('posts')->whereStatusId(1)->count();
+        $data['posts_en'] = \DB::table('posts')->whereStatusId(1)->where('content_en', '!=', null)->count();
+        $data['posts_cn'] = \DB::table('posts')->whereStatusId(1)->where('content_cn', '!=', null)->count();
+
         $data['postsinactivos'] = \DB::table('posts')->where('status_id',2)->count();
         $data['categorias'] = \DB::table('categories')->where('status_id',1)->count();
 

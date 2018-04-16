@@ -13,29 +13,14 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function (Request $request) {
-    #$categories = \App\Models\Category::whereStatusId(1)->get();
-    #$posts = \App\Models\Post::whereStatusId(1)->orderBy('id', 'DESC')->get();
-    #$recents = \App\Models\Post::whereStatusId(1)->orderBy('id', 'DESC')->limit(6)->get();
+//Route::get('/', function (Request $request) {
+//
+//})->name('blog');
 
-    $category = [];
-
-
-
-    if(isset($request['cat'])) {
-        $posts = \App\Models\Post::with('file')->whereStatusId(1)->whereCategoryId($request['cat'])->orderBy('id', 'DESC')->simplePaginate(6);
-        $category = \App\Models\Category::Where("id", $request['cat'])->first();
-    }else{
-        $posts = \App\Models\Post::with('file')->whereStatusId(1)->orderBy('id', 'DESC')->simplePaginate(6);
-    }
-
-    #dd($posts);
-
-    return view('blog.index')
-        ->with('category', $category)
-        ->with('posts', $posts);
-        #->with('recents', $recents);
-})->name('blog');
+Route::get('/', [
+    'uses' => 'BlogController@index',
+    'as' => 'blog'
+]);
 
 Route::get('/configcache', function() {
     \Artisan::call('config:clear');
@@ -46,20 +31,28 @@ Route::get('/configcache', function() {
     print_r($exitCode);
 });
 
-Route::get('blog/{title_slug}', [
-    'uses' => 'PostController@GetPost',
-    'as'   => 'blog.getPost',
-]);
+
+
+
+
+
 
 Route::post('api/posts/index', [
     'uses' => 'PostController@index',
     'as' => 'api.posts.index'
 ]);
 
+Route::post('api/news/index', [
+    'uses' => 'NewsController@index',
+    'as' => 'api.news.index'
+]);
+
 Route::post('api/comments/index', [
     'uses' => 'CommentController@index',
     'as' => 'api.comments.index'
 ]);
+
+
 
 Route::get('/blog_postid/{id}', function ($id) {
     $post = \App\Models\Post::with('file')->where("id", $id)->first();
@@ -73,10 +66,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('contacto', function () {
 
-    return view('contact.index');
-})->name('contact_us');
 
 Route::post('contacto', function (Request $request) {
 
@@ -89,12 +79,11 @@ Route::post('contacto', function (Request $request) {
 
     alert()->success("Tu mensaje ha sido enviado, nos pondremos en contacto contigo a la brevedad.", 'Gracias')->persistent("Ok");
 
-    return redirect()->route('contact_us');
+    return redirect()->route('contact_us', ['lang' => $request->lang]);
 
 })->name('contact.post');
 
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-
 
 Route::resource('categories', 'CategoryController');
 
@@ -102,6 +91,44 @@ Route::resource('users', 'UserController');
 
 Route::resource('posts', 'PostController');
 
+Route::resource('news', 'NewsController');
+
 Route::resource('posts', 'PostController');
 
 Route::resource('comments', 'CommentController');
+
+Route::get('/{lang}', [
+    'uses' => 'BlogController@indexLang',
+    'as' => 'homeByLang'
+]);
+
+Route::group(['prefix' => '{lang}'], function ($lang) {
+
+
+    Route::get('noticias', [
+        'uses' => 'BlogController@noticias',
+        'as' => 'noticias'
+    ]);
+
+    Route::get('contacto', [
+        'uses' => 'BlogController@contacto',
+        'as' => 'contact_us'
+    ]);
+
+    Route::get('nosotros', [
+        'uses' => 'BlogController@nosotros',
+        'as' => 'about_us'
+    ]);
+
+    Route::get('{category_name}', [
+        'uses' => 'BlogController@getPosts',
+        'as'   => 'categoria',
+    ]);
+
+    Route::get('{category_name}/{post_id}', [
+        'uses' => 'BlogController@GetPost',
+        'as'   => 'blog.getPost',
+    ]);
+});
+
+

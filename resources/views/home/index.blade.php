@@ -16,8 +16,8 @@
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h3>{!! $data['posts'] !!}</h3>
-                        <p>Posts Activos</p>
+                        <h3>{!! $data['posts_es'] !!}</h3>
+                        <p>Publicaciones (Español)</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-file-text-o"></i>
@@ -26,7 +26,35 @@
                         {{--Ir al reporte <i class="fa fa-arrow-circle-right"></i>--}}
                     </a>
                 </div>
-            </div><!-- ./col -->
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3>{!! $data['posts_en'] !!}</h3>
+                        <p>Publicaciones (English)</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-file-text-o"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">&nbsp;
+                        {{--Ir al reporte <i class="fa fa-arrow-circle-right"></i>--}}
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3>{!! $data['posts_cn'] !!}</h3>
+                        <p>Publicaciones (中文)</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-file-text-o"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">&nbsp;
+                        {{--Ir al reporte <i class="fa fa-arrow-circle-right"></i>--}}
+                    </a>
+                </div>
+            </div>
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="small-box bg-red">
                     <div class="inner">
@@ -41,20 +69,20 @@
                     </a>
                 </div>
             </div><!-- ./col -->
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="small-box bg-primary">
-                    <div class="inner">
-                        <h3>{!! $data['categorias'] !!}</h3>
-                        <p>Categorias</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-list"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">
-                        &nbsp;
-                    </a>
-                </div>
-            </div><!-- ./col -->
+            {{--<div class="col-md-4 col-sm-6 col-xs-12">--}}
+                {{--<div class="small-box bg-primary">--}}
+                    {{--<div class="inner">--}}
+                        {{--<h3>{!! $data['categorias'] !!}</h3>--}}
+                        {{--<p>Categorias</p>--}}
+                    {{--</div>--}}
+                    {{--<div class="icon">--}}
+                        {{--<i class="fa fa-list"></i>--}}
+                    {{--</div>--}}
+                    {{--<a href="#" class="small-box-footer">--}}
+                        {{--&nbsp;--}}
+                    {{--</a>--}}
+                {{--</div>--}}
+            {{--</div>--}}
 
         </div><!-- /.row -->
     </section>

@@ -61,7 +61,7 @@
                         "targets" : 0,
                         "width" : "90px",
                         "render": function (data, type, row, meta) {
-                            return  '<a href="/blog_postid/'+data+'" target="_blank" data-toggle="tooltip" title="Ver Post">'+data+'</a>';
+                            return  '<a href="/es/blog/'+data+'" target="_blank" data-toggle="tooltip" title="Ver Post">'+data+'</a>';
                         }
                     }
                 ],

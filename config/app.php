@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('bc2.mx'),
+    'name' => 'bc2.mx',
 
     /*
     |--------------------------------------------------------------------------

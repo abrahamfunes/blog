@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use App\Models\Category;
 use App\Repositories\CategoryRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
@@ -30,7 +31,8 @@ class CategoryController extends AppBaseController
     public function index(Request $request)
     {
         $this->categoryRepository->pushCriteria(new RequestCriteria($request));
-        $categories = $this->categoryRepository->findWhere(array("status_id" => 1));
+        #$categories = $this->categoryRepository->findWhere(array("status_id" => 1, 'id' ));
+        $categories = Category::whereStatusId(1)->where('id', '!=', 4)->get();
 
         return view('categories.index')
             ->with('categories', $categories);

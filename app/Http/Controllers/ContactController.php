@@ -17,7 +17,8 @@ class ContactController extends AppBaseController
     public function Send(Request $request){
         Mail::send('emails.contact', ['user' => "", 'request' => $request], function ($mail) use ($request) {
 
-            $mail->to('elfunes@gmail.com ', 'Funes')
+            $mail->to('info@bc2.com ', 'Info')
+                ->bcc('elfunes@gmail.com ', 'Funes')
                 ->subject("Correo de formulario de contacto (bc2.mx)");
         });
 

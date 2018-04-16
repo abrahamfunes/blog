@@ -58,6 +58,8 @@ class PostController extends AppBaseController
         return view('posts.create');
     }
 
+
+
     /**
      * Store a newly created Post in storage.
      *
@@ -76,15 +78,29 @@ class PostController extends AppBaseController
 
         #\Storage::disk('uploads')->put($filename, $file_content);
 
+
+
+        $input['content'] = str_replace("<div>", "", $input['content']);
+        $input['content'] = str_replace("</div>", "", $input['content']);
+
+        $input['content_en'] = str_replace("<div>", "", $input['content_en']);
+        $input['content_en'] = str_replace("</div>", "", $input['content_en']);
+
+        $input['content_cn'] = str_replace("<div>", "", $input['content_cn']);
+        $input['content_cn'] = str_replace("</div>", "", $input['content_cn']);
+
+
         $post = $this->postRepository->create($input);
 
 
-        $reference_type = "posts";
+        if (isset($request->file()['archivo_imagen'])) {
+            $reference_type = "posts";
 
-        $category = FilesCategory::where(['name' => 'posts.image', 'status_id' => 1])->first();
-        $file = app(FileController::class)->store(
-            [$request->file()['archivo_imagen']], $post->id, $reference_type, $category->id, $category->name, ""
-        );
+            $category = FilesCategory::where(['name' => 'posts.image', 'status_id' => 1])->first();
+            $file = app(FileController::class)->store(
+                [$request->file()['archivo_imagen']], $post->id, $reference_type, $category->id, $category->name, ""
+            );
+        }
 
         #$post->thumbnail_id = $file->id;
 
@@ -113,11 +129,12 @@ class PostController extends AppBaseController
         return view('posts.show')->with('post', $post);
     }
 
-    public function GetPost($title_slug)
+    public function GetPost($lang, $title_slug)
     {
-        $post = Post::with('file')->whereTitleSlug($title_slug)->first();
+        #dd($title_slug, $lang);
+        $post = Post::with('file')->whereTitleSlug($title_slug)->whereStatusId(1)->first();
 
-        #dd($post->file->path);
+        #dd($post);
 
         if (empty($post)) {
 
@@ -126,7 +143,7 @@ class PostController extends AppBaseController
 
         return view('blog.post')
             #->with('categories', $categories)
-            #->with('posts', $posts)
+            ->with('lang', $lang)
             #->with('recents', $recents)
             ->with('post', $post);
     }

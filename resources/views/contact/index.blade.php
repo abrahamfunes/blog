@@ -2,7 +2,7 @@
 
 @section('banner')
         <!-- Start Bottom Header -->
-<div class="header-bg page-area" style="background: url(img/banner_contact.jpg) !important;background-repeat: no-repeat;
+<div class="header-bg page-area" style="background: url(/img/banner_contact.jpg) !important;background-repeat: no-repeat;
     background-size: cover;
     background-position: top center;
     background-attachment: fixed;">
@@ -13,7 +13,7 @@
                 <div class="slider-content text-center">
                     <div class="header-bottom">
                         <div class="layer2 wow zoomIn" data-wow-duration="1s" data-wow-delay=".4s">
-                            <h1 class="title2">Escribenos</h1>
+                            <h1 class="title2">@lang('blog.escribenos')</h1>
                         </div>
                         <div class="layer3 wow zoomInUp" data-wow-duration="2s" data-wow-delay="1s">
                             {{--<h2 class="title3">Noticias / Blog</h2>--}}
@@ -36,7 +36,7 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="section-headline text-center">
-                        <h2>Contacto</h2>
+                        <h2>@lang('blog.contacto')</h2>
                     </div>
                 </div>
             </div>
