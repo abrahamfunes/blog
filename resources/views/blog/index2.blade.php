@@ -173,8 +173,8 @@ $scriptVersion = $detect->getScriptVersion();
                     </a>
                 </li>
                 <li class="list-item proyecto-single">
-                    <a  href="http://fundaciondreamx.com" target="_blank">
-                        <img src="/images/logo-dreamx.png" alt="DreaMX" title="DreaMX" />
+                    <a  href="http://fundaciondmx.com" target="_blank">
+                        <img src="/images/logo-dmx.svg" style="max-height: 280px" alt="DMX" title="DMX" />
                     </a>
                 </li>
                 <li class="list-item proyecto-single">

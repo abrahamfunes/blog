@@ -138,7 +138,7 @@ return [
 
 
 
-    'footer_bc2' => 'BC2 es un espacio para compartir información relevante sobre el mundo de los negocios; principalmente en materia corporativa, financiera, legal y económica. A través de nuestra editorial buscamos acercar de una manera practica diferentes puntos de vista sobre estos temas.',
+    'footer_bc2' => 'BC2 es un espacio para compartir información relevante sobre el mundo de los negocios; principalmente en materia corporativa, financiera, legal y económica. A través de nuestra editorial buscamos acercar de una manera práctica diferentes puntos de vista sobre estos temas.',
 
     #'footer_bc2' => 'BC2 es un espacio para analizar y compartir con empresarios, profesionistas y estudiantes del público internacional, información sobre temas de interés en diversos rubros del mundo de los negocios, principalmente en materia corporativa, legal, financiera y tributaria.',
 

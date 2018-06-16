@@ -35,21 +35,25 @@
                     </li>
                 </ul>
             </nav>
-            <div class="main-nav-aside">
+            <div class="main-nav-aside" style="padding-top: 10px">
                 <a href="{{ route('contact_us', ['lang' => \App::getLocale()]) }}" class="mob-contacto">@lang('blog.menu_contacto')</a>
+                <a href="/es{{ substr(\Request::path(),2) }}" class="btn-sm">ESP</a> |
+                <a href="/en{{ substr(\Request::path(),2) }}" class="btn-sm">ENG</a> |
+                <a href="/cn{{ substr(\Request::path(),2) }}" class="btn-sm">中國</a>
                 <div class="lang-select">
-                    <a href="#" class="btn-lang">@lang('blog.lenguaje')</a>
-                    <ul class="list list-lang">
-                        <li>
-                            <a href="/es{{ substr(\Request::path(),2) }}">Español</a>
-                        </li>
-                        <li>
-                            <a href="/en{{ substr(\Request::path(),2) }}">English</a>
-                        </li>
-                        <li>
-                            <a href="/cn{{ substr(\Request::path(),2) }}">中文简体</a>
-                        </li>
-                    </ul>
+
+                    {{--<a href="#" class="btn-lang">@lang('blog.lenguaje')</a>--}}
+                    {{--<ul class="list list-lang">--}}
+                        {{--<li>--}}
+                            {{--<a href="/es{{ substr(\Request::path(),2) }}">Español</a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a href="/en{{ substr(\Request::path(),2) }}">English</a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a href="/cn{{ substr(\Request::path(),2) }}">中文简体</a>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
                 </div>
             </div>
         </section>

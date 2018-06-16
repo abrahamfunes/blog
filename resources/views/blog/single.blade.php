@@ -3,7 +3,7 @@
 @section('metas')
     <meta property="og:url"           content="{{ url()->current() }}" />
     <meta property="og:type"          content="bc2.mx" />
-    <meta property="og:title"         content="bc2.mx" />
+    <meta property="og:title"         content="{{ $post->title }}" />
     <meta property="og:description"   content="{{ $post->title }}" />
     <meta property="og:image"         content="http://bc2.mx{{ ($post->file) ? $post->file->path : "" }}" />
 @endsection

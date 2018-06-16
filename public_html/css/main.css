@@ -999,6 +999,16 @@ ul.list-contact p {
 		top: 2px;
 	}
 
+	.mob-lang {
+		border: none;
+		display: inline;
+
+		text-align: right;
+		padding: 0;
+		line-height: 0;
+		top: 2px;
+	}
+
 	.main-nav-aside {
 		right: 20px;
 		top: 7px;
