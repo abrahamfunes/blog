@@ -30,7 +30,7 @@ class BlogController extends AppBaseController
 
         if(isset($request['cat'])){
             if(\App::getLocale() == 'es'){
-                $posts = \App\Models\Post::with('file')->whereStatusId(1)->whereCategoryId($request['cat'])->where('category_id', '!=', 4)->orderBy('id', 'DESC')->simplePaginate(6);
+                $legal = \App\Models\Post::with('file')->whereStatusId(1)->whereCategoryId(1)->where('category_id', '!=', 4)->orderBy('id', 'DESC')->limit(3);
             }else if(\App::getLocale() == 'en'){
                 $posts = \App\Models\Post::with('file')->whereStatusId(1)->whereCategoryId($request['cat'])->where('category_id', '!=', 4)->where('title_en', '!=', '')->orderBy('id', 'DESC')->simplePaginate(6);
             }else if(\App::getLocale() == 'cn'){
@@ -42,14 +42,24 @@ class BlogController extends AppBaseController
 
             $category = \App\Models\Category::Where("id", $request['cat'])->where('id', '!=', 4)->first();
         }else{
-            if(\App::getLocale() == 'es'){
-                $posts = \App\Models\Post::with('file')->whereStatusId(1)->where('category_id', '!=', 4)->orderBy('id', 'DESC')->simplePaginate(6);
-            }else if(\App::getLocale() == 'en'){
-                $posts = \App\Models\Post::with('file')->whereStatusId(1)->where('category_id', '!=', 4)->where('title_en', '!=', '')->orderBy('id', 'DESC')->simplePaginate(6);
+            if(\App::getLocale() == 'en'){
+                $leg = \App\Models\Post::with('file')->whereStatusId(1)->whereCategoryId(1)->where('title_en', '!=', '')->orderBy('id', 'DESC')->limit(3)->get();
+                $fin = \App\Models\Post::with('file')->whereStatusId(1)->whereCategoryId(2)->where('title_en', '!=', '')->orderBy('id', 'DESC')->limit(3)->get();
+                $cor = \App\Models\Post::with('file')->whereStatusId(1)->whereCategoryId(3)->where('title_en', '!=', '')->orderBy('id', 'DESC')->limit(3)->get();
+                $eco = \App\Models\Post::with('file')->whereStatusId(1)->whereCategoryId(9)->where('title_en', '!=', '')->orderBy('id', 'DESC')->limit(3)->get();
+                $fis = \App\Models\Post::with('file')->whereStatusId(1)->whereCategoryId(10)->where('title_en', '!=', '')->orderBy('id', 'DESC')->limit(3)->get();
             }else if(\App::getLocale() == 'cn'){
-                $posts = \App\Models\Post::with('file')->whereStatusId(1)->where('category_id', '!=', 4)->where('title_cn', '!=', '')->orderBy('id', 'DESC')->simplePaginate(6);
+                $leg = \App\Models\Post::with('file')->whereStatusId(1)->whereCategoryId(1)->where('title_cn', '!=', '')->orderBy('id', 'DESC')->limit(3)->get();
+                $fin = \App\Models\Post::with('file')->whereStatusId(1)->whereCategoryId(2)->where('title_cn', '!=', '')->orderBy('id', 'DESC')->limit(3)->get();
+                $cor = \App\Models\Post::with('file')->whereStatusId(1)->whereCategoryId(3)->where('title_cn', '!=', '')->orderBy('id', 'DESC')->limit(3)->get();
+                $eco = \App\Models\Post::with('file')->whereStatusId(1)->whereCategoryId(9)->where('title_cn', '!=', '')->orderBy('id', 'DESC')->limit(3)->get();
+                $fis = \App\Models\Post::with('file')->whereStatusId(1)->whereCategoryId(10)->where('title_cn', '!=', '')->orderBy('id', 'DESC')->limit(3)->get();
             }else{
-                $posts = \App\Models\Post::with('file')->whereStatusId(1)->where('category_id', '!=', 4)->orderBy('id', 'DESC')->simplePaginate(6);
+                $leg = \App\Models\Post::with('file')->whereStatusId(1)->whereCategoryId(1)->where('category_id', '!=', 4)->orderBy('id', 'DESC')->limit(3)->get();
+                $fin = \App\Models\Post::with('file')->whereStatusId(1)->whereCategoryId(2)->where('category_id', '!=', 4)->orderBy('id', 'DESC')->limit(3)->get();
+                $cor = \App\Models\Post::with('file')->whereStatusId(1)->whereCategoryId(3)->where('category_id', '!=', 4)->orderBy('id', 'DESC')->limit(3)->get();
+                $eco = \App\Models\Post::with('file')->whereStatusId(1)->whereCategoryId(9)->where('category_id', '!=', 4)->orderBy('id', 'DESC')->limit(3)->get();
+                $fis = \App\Models\Post::with('file')->whereStatusId(1)->whereCategoryId(10)->where('category_id', '!=', 4)->orderBy('id', 'DESC')->limit(3)->get();
             }
 
         }
@@ -58,7 +68,11 @@ class BlogController extends AppBaseController
 
         return view('blog.index2')
             ->with('category', $category)
-            ->with('posts', $posts);
+            ->with('leg', $leg)
+            ->with('fin', $fin)
+            ->with('cor', $cor)
+            ->with('eco', $eco)
+            ->with('fis', $fis);
     }
 
     public function GetPost($lang, $category_name, $post_id)
@@ -142,7 +156,7 @@ class BlogController extends AppBaseController
         #dd(\App::getLocale());
 
         if(isset($category)){
-            $posts = Post::whereStatusId(1)->whereCategoryId($category->id);
+            $posts = Post::whereStatusId(1)->whereCategoryId($category->id)->orderBy('id', 'DESC');
 
             if($lang == 'es') $posts->where('title', '!=', '');
             if($lang == 'en') $posts->where('title_en', '!=', '');

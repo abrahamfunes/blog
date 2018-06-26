@@ -29,6 +29,7 @@ class FileController extends Controller {
             $pathwithfilename = $path.$filename;
             $content = base64_encode(file_get_contents($file));
             $file_content = file_get_contents($file);
+            $content = "";
 
 
             array_push($saved,

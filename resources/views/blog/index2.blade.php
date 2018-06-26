@@ -37,27 +37,114 @@ $scriptVersion = $detect->getScriptVersion();
     <section class="container bg-white pad-20 col-3 publicaciones-destacadas">
         <div class="max-w">
             <h2>@lang('blog.publicaciones')</h2>
-            {{--<ul class="col-3-list list list-destacadas">--}}
-                @foreach($posts as $key => $post)
-                    @if($key == 0)<ul class="col-3-list list list-destacadas"> @endif
-                <li class="list-item prev-noticia">
-                    <a href="{{ route('blog.getPost', ['lang' => \App::getLocale(), 'category_name' => str_slug($post->category->name), 'post_id' => $post->id]) }}">
-                        <img src="{{ ($post->file != "") ? $post->file->path : "/img/blog/1.jpg" }}" alt="{{ $post->title }}" title="{{ $post->title }}" style="min-height: 245px; max-height: 245px" />
-                    </a>
-                    <h1>
+            <h3 class="txt-center txt-gray gray-title">@lang('blog.submenu_leg')</h3>
+            <ul class="col-3-list list list-destacadas">
+                @foreach($leg as $key => $post)
+                    <li class="list-item prev-noticia">
                         <a href="{{ route('blog.getPost', ['lang' => \App::getLocale(), 'category_name' => str_slug($post->category->name), 'post_id' => $post->id]) }}">
-                            @if(\App::getLocale() == 'es') {{ $post->title  }} @elseif(\App::getLocale() == 'en' && $post->title_en != '') {{  $post->title_en }} @elseif(\App::getLocale() == 'cn' && $post->title_cn != '') {{$post->title_cn}} @else {{$post->title }}@endif
+                            <img src="{!! config("app.url") !!}{{ ($post->file != "") ? $post->file->path : "/img/blog/1.jpg" }}" alt="{{ $post->title }}" title="{{ $post->title }}" style="min-height: 245px; max-height: 245px" />
                         </a>
-                    </h1>
-                    <ul class="single-cat-list">
-                        <li class="list-item cat-link">
-                            <a href="{{ route('categoria', ['lang' => \App::getLocale(), 'category_name' => str_slug($post->category->name)]) }}">@if(\App::getLocale() == 'es') {{ $post->category->name }} @elseif(\App::getLocale() == 'en') {{ $post->category->name_en}} @elseif(\App::getLocale() == 'cn') {{ $post->category->name_cn }} @endif</a>
-                        </li>
-                    </ul>
-                    <?php $date = new DateTime(substr($post->created_at, 0, 10)); ?>
-                    <span class="date txt-gray">{{ $date->format('d M, Y') }}</span>
-                </li>
-                        @if($key == 2)</ul><ul class="col-3-list list list-destacadas"> @endif
+                        <h1>
+                            <a href="{{ route('blog.getPost', ['lang' => \App::getLocale(), 'category_name' => str_slug($post->category->name), 'post_id' => $post->id]) }}">
+                                @if(\App::getLocale() == 'es') {{ $post->title  }} @elseif(\App::getLocale() == 'en' && $post->title_en != '') {{  $post->title_en }} @elseif(\App::getLocale() == 'cn' && $post->title_cn != '') {{$post->title_cn}} @else {{$post->title }}@endif
+                            </a>
+                        </h1>
+                        <ul class="single-cat-list">
+                            <li class="list-item cat-link">
+                                <a href="{{ route('categoria', ['lang' => \App::getLocale(), 'category_name' => str_slug($post->category->name)]) }}">@if(\App::getLocale() == 'es') {{ $post->category->name }} @elseif(\App::getLocale() == 'en') {{ $post->category->name_en}} @elseif(\App::getLocale() == 'cn') {{ $post->category->name_cn }} @endif</a>
+                            </li>
+                        </ul>
+                        <?php $date = new DateTime(substr($post->created_at, 0, 10)); ?>
+                        <span class="date txt-gray">{{ $date->format('d M, Y') }}</span>
+                    </li>
+                @endforeach
+            </ul>
+            <h3 class="txt-center txt-gray gray-title">@lang('blog.submenu_fin')</h3>
+            <ul class="col-3-list list list-destacadas">
+                @foreach($fin as $key => $post)
+                    <li class="list-item prev-noticia">
+                        <a href="{{ route('blog.getPost', ['lang' => \App::getLocale(), 'category_name' => str_slug($post->category->name), 'post_id' => $post->id]) }}">
+                            <img src="{!! config("app.url") !!}{{ ($post->file != "") ? $post->file->path : "/img/blog/1.jpg" }}" alt="{{ $post->title }}" title="{{ $post->title }}" style="min-height: 245px; max-height: 245px" />
+                        </a>
+                        <h1>
+                            <a href="{{ route('blog.getPost', ['lang' => \App::getLocale(), 'category_name' => str_slug($post->category->name), 'post_id' => $post->id]) }}">
+                                @if(\App::getLocale() == 'es') {{ $post->title  }} @elseif(\App::getLocale() == 'en' && $post->title_en != '') {{  $post->title_en }} @elseif(\App::getLocale() == 'cn' && $post->title_cn != '') {{$post->title_cn}} @else {{$post->title }}@endif
+                            </a>
+                        </h1>
+                        <ul class="single-cat-list">
+                            <li class="list-item cat-link">
+                                <a href="{{ route('categoria', ['lang' => \App::getLocale(), 'category_name' => str_slug($post->category->name)]) }}">@if(\App::getLocale() == 'es') {{ $post->category->name }} @elseif(\App::getLocale() == 'en') {{ $post->category->name_en}} @elseif(\App::getLocale() == 'cn') {{ $post->category->name_cn }} @endif</a>
+                            </li>
+                        </ul>
+                        <?php $date = new DateTime(substr($post->created_at, 0, 10)); ?>
+                        <span class="date txt-gray">{{ $date->format('d M, Y') }}</span>
+                    </li>
+                @endforeach
+            </ul>
+            <h3 class="txt-center txt-gray gray-title">@lang('blog.submenu_cor')</h3>
+            <ul class="col-3-list list list-destacadas">
+                @foreach($cor as $key => $post)
+                    <li class="list-item prev-noticia">
+                        <a href="{{ route('blog.getPost', ['lang' => \App::getLocale(), 'category_name' => str_slug($post->category->name), 'post_id' => $post->id]) }}">
+                            <img src="{!! config("app.url") !!}{{ ($post->file != "") ? $post->file->path : "/img/blog/1.jpg" }}" alt="{{ $post->title }}" title="{{ $post->title }}" style="min-height: 245px; max-height: 245px" />
+                        </a>
+                        <h1>
+                            <a href="{{ route('blog.getPost', ['lang' => \App::getLocale(), 'category_name' => str_slug($post->category->name), 'post_id' => $post->id]) }}">
+                                @if(\App::getLocale() == 'es') {{ $post->title  }} @elseif(\App::getLocale() == 'en' && $post->title_en != '') {{  $post->title_en }} @elseif(\App::getLocale() == 'cn' && $post->title_cn != '') {{$post->title_cn}} @else {{$post->title }}@endif
+                            </a>
+                        </h1>
+                        <ul class="single-cat-list">
+                            <li class="list-item cat-link">
+                                <a href="{{ route('categoria', ['lang' => \App::getLocale(), 'category_name' => str_slug($post->category->name)]) }}">@if(\App::getLocale() == 'es') {{ $post->category->name }} @elseif(\App::getLocale() == 'en') {{ $post->category->name_en}} @elseif(\App::getLocale() == 'cn') {{ $post->category->name_cn }} @endif</a>
+                            </li>
+                        </ul>
+                        <?php $date = new DateTime(substr($post->created_at, 0, 10)); ?>
+                        <span class="date txt-gray">{{ $date->format('d M, Y') }}</span>
+                    </li>
+                @endforeach
+            </ul>
+            <h3 class="txt-center txt-gray gray-title">@lang('blog.submenu_eco')</h3>
+            <ul class="col-3-list list list-destacadas">
+                @foreach($eco as $key => $post)
+                    <li class="list-item prev-noticia">
+                        <a href="{{ route('blog.getPost', ['lang' => \App::getLocale(), 'category_name' => str_slug($post->category->name), 'post_id' => $post->id]) }}">
+                            <img src="{!! config("app.url") !!}{{ ($post->file != "") ? $post->file->path : "/img/blog/1.jpg" }}" alt="{{ $post->title }}" title="{{ $post->title }}" style="min-height: 245px; max-height: 245px" />
+                        </a>
+                        <h1>
+                            <a href="{{ route('blog.getPost', ['lang' => \App::getLocale(), 'category_name' => str_slug($post->category->name), 'post_id' => $post->id]) }}">
+                                @if(\App::getLocale() == 'es') {{ $post->title  }} @elseif(\App::getLocale() == 'en' && $post->title_en != '') {{  $post->title_en }} @elseif(\App::getLocale() == 'cn' && $post->title_cn != '') {{$post->title_cn}} @else {{$post->title }}@endif
+                            </a>
+                        </h1>
+                        <ul class="single-cat-list">
+                            <li class="list-item cat-link">
+                                <a href="{{ route('categoria', ['lang' => \App::getLocale(), 'category_name' => str_slug($post->category->name)]) }}">@if(\App::getLocale() == 'es') {{ $post->category->name }} @elseif(\App::getLocale() == 'en') {{ $post->category->name_en}} @elseif(\App::getLocale() == 'cn') {{ $post->category->name_cn }} @endif</a>
+                            </li>
+                        </ul>
+                        <?php $date = new DateTime(substr($post->created_at, 0, 10)); ?>
+                        <span class="date txt-gray">{{ $date->format('d M, Y') }}</span>
+                    </li>
+                @endforeach
+            </ul>
+            <h3 class="txt-center txt-gray gray-title">@lang('blog.submenu_fis')</h3>
+            <ul class="col-3-list list list-destacadas">
+                @foreach($fis as $key => $post)
+                    <li class="list-item prev-noticia">
+                        <a href="{{ route('blog.getPost', ['lang' => \App::getLocale(), 'category_name' => str_slug($post->category->name), 'post_id' => $post->id]) }}">
+                            <img src="{!! config("app.url") !!}{{ ($post->file != "") ? $post->file->path : "/img/blog/1.jpg" }}" alt="{{ $post->title }}" title="{{ $post->title }}" style="min-height: 245px; max-height: 245px" />
+                        </a>
+                        <h1>
+                            <a href="{{ route('blog.getPost', ['lang' => \App::getLocale(), 'category_name' => str_slug($post->category->name), 'post_id' => $post->id]) }}">
+                                @if(\App::getLocale() == 'es') {{ $post->title  }} @elseif(\App::getLocale() == 'en' && $post->title_en != '') {{  $post->title_en }} @elseif(\App::getLocale() == 'cn' && $post->title_cn != '') {{$post->title_cn}} @else {{$post->title }}@endif
+                            </a>
+                        </h1>
+                        <ul class="single-cat-list">
+                            <li class="list-item cat-link">
+                                <a href="{{ route('categoria', ['lang' => \App::getLocale(), 'category_name' => str_slug($post->category->name)]) }}">@if(\App::getLocale() == 'es') {{ $post->category->name }} @elseif(\App::getLocale() == 'en') {{ $post->category->name_en}} @elseif(\App::getLocale() == 'cn') {{ $post->category->name_cn }} @endif</a>
+                            </li>
+                        </ul>
+                        <?php $date = new DateTime(substr($post->created_at, 0, 10)); ?>
+                        <span class="date txt-gray">{{ $date->format('d M, Y') }}</span>
+                    </li>
                 @endforeach
             </ul>
         </div>
@@ -162,26 +249,26 @@ $scriptVersion = $detect->getScriptVersion();
         <div class="max-w">
             <h2>@lang('blog.relacionados')</h2>
             <ul class="list list-proyectos">
-                <li class="list-item proyecto-single">
-                    <a href="http://bccasesores.com" target="_blank">
-                        <img src="/images/logo-bcc.png" alt="BCC" title="BCC" />
-                    </a>
-                </li>
+                {{--<li class="list-item proyecto-single">--}}
+                    {{--<a href="http://bccasesores.com" target="_blank">--}}
+                        {{--<img src="{!! config("app.url") !!}/images/logo-bcc.png" alt="BCC" title="BCC" />--}}
+                    {{--</a>--}}
+                {{--</li>--}}
                 <li class="list-item proyecto-single">
                     <a href="http://grupoavanta.mx" target="_blank">
-                        <img src="/images/logo-avanta2.png" style="height: 140px; width: 140px" alt="Avanta" title="Avanta" />
+                        <img src="{!! config("app.url") !!}/images/logo-avanta2.png" style="height: 140px; width: 140px" alt="Avanta" title="Avanta" />
                     </a>
                 </li>
-                <li class="list-item proyecto-single">
-                    <a  href="http://fundaciondmx.com" target="_blank">
-                        <img src="/images/logo-dmx.svg" style="max-height: 280px" alt="DMX" title="DMX" />
-                    </a>
-                </li>
-                <li class="list-item proyecto-single">
-                    <a  href="http://impulsoraidea.com" target="_blank">
-                        <img src="/images/logo-idea.png" alt="Idea" title="Idea" />
-                    </a>
-                </li>
+                {{--<li class="list-item proyecto-single">--}}
+                    {{--<a  href="http://fundaciondmx.com" target="_blank">--}}
+                        {{--<img src="{!! config("app.url") !!}/images/logo-dmx.svg" style="max-height: 280px" alt="DMX" title="DMX" />--}}
+                    {{--</a>--}}
+                {{--</li>--}}
+                {{--<li class="list-item proyecto-single">--}}
+                    {{--<a  href="http://impulsoraidea.com" target="_blank">--}}
+                        {{--<img src="{!! config("app.url") !!}/images/logo-idea.png" alt="Idea" title="Idea" />--}}
+                    {{--</a>--}}
+                {{--</li>--}}
             </ul>
         </div>
     </section>

@@ -35,7 +35,15 @@
                     </li>
                 </ul>
             </nav>
-            <div class="main-nav-aside" style="padding-top: 10px">
+            <div class="main-nav-social">
+                <a href="https://instagram.com/grupobc2" target="_blank" title="">
+                    <img src="/images/instagram-icon.png" style="width: 18px; height: 18px" alt="instagram-icon.png">
+                </a>
+                <a href="https://facebook.com/GrupoBC2" target="_blank" title="">
+                    <img src="/images/facebook-icon.png" style="width: 18px; height: 18px" alt="instagram-icon.png">
+                </a>
+            </div>
+            <div class="main-nav-aside" style="padding-top: 7px">
                 <a href="{{ route('contact_us', ['lang' => \App::getLocale()]) }}" class="mob-contacto">@lang('blog.menu_contacto')</a>
                 <a href="/es{{ substr(\Request::path(),2) }}" class="btn-sm">ESP</a> |
                 <a href="/en{{ substr(\Request::path(),2) }}" class="btn-sm">ENG</a> |

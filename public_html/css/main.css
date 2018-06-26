@@ -973,6 +973,11 @@ ul.list-contact p {
     float: right;
 	}
 
+	.main-nav-social {
+		width: 32%;
+    	float: right;
+	}
+
 	.mob-menu {
 		padding: 0 0 8px;
 		border-bottom: solid 1px #fff;
@@ -1015,7 +1020,13 @@ ul.list-contact p {
 		padding: 0
 	}
 
-	.list-lang, .main-nav-aside, .btn-lang, .mob-contacto {
+	.main-nav-social {
+		right: 20px;
+		top: 10px;
+		padding: 0
+	}
+
+	.list-lang, .main-nav-aside, .main-nav-social, .btn-lang, .mob-contacto {
 		position: absolute;
 	}
 

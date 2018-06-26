@@ -29,7 +29,7 @@ $scriptVersion = $detect->getScriptVersion();
                 @if(count($posts) >= 1)
                 <li class="list-item prev-noticia dest-left">
                     <a href="{{ route('blog.getPost', ['lang' => \App::getLocale(), 'category_name' => str_slug($category->name), 'post_id' => $posts[0]->id]) }}" class="pub-thumb">
-                        <img src="{{ ($posts[0]->file != "") ? $posts[0]->file->path : "/img/blog/1.jpg" }}" alt="{{ $posts[0]->title }}" title="{{ $posts[0]->title }}" />
+                        <img src="{!! config("app.url") !!}{{ ($posts[0]->file != "") ? $posts[0]->file->path : "/img/blog/1.jpg" }}" alt="{{ $posts[0]->title }}" title="{{ $posts[0]->title }}" />
                     </a>
                     <h1>
                         <a href="{{ route('blog.getPost', ['lang' => \App::getLocale(), 'category_name' => str_slug($posts[0]->category->name), 'post_id' => $posts[0]->id]) }}">
@@ -52,7 +52,7 @@ $scriptVersion = $detect->getScriptVersion();
                     @if(count($posts) >= 2)
                     <li class="list-item prev-noticia">
                         <a href="{{ route('blog.getPost', ['lang' => \App::getLocale(), 'category_name' => str_slug($category->name), 'post_id' => $posts[1]->id]) }}" class="pub-thumb">
-                            <img src="{{ ($posts[1]->file != "") ? $posts[1]->file->path : "/img/blog/1.jpg" }}" alt="{{ $posts[1]->title }}" title="{{ $posts[1]->title }}" />
+                            <img src="{!! config("app.url") !!}{{ ($posts[1]->file != "") ? $posts[1]->file->path : "/img/blog/1.jpg" }}" alt="{{ $posts[1]->title }}" title="{{ $posts[1]->title }}" />
                         </a>
                         <div class="info-prev">
                             <h1>
@@ -78,7 +78,7 @@ $scriptVersion = $detect->getScriptVersion();
                         @if(count($posts) >= 3)
                     <li class="list-item prev-noticia">
                         <a href="{{ route('blog.getPost', ['lang' => \App::getLocale(), 'category_name' => str_slug($category->name), 'post_id' => $posts[2]->id]) }}" class="pub-thumb">
-                            <img src="{{ ($posts[2]->file != "") ? $posts[2]->file->path : "/img/blog/1.jpg" }}" alt="{{ $posts[2]->title }}" title="{{ $posts[2]->title }}" />
+                            <img src="{!! config("app.url") !!}{{ ($posts[2]->file != "") ? $posts[2]->file->path : "/img/blog/1.jpg" }}" alt="{{ $posts[2]->title }}" title="{{ $posts[2]->title }}" />
                         </a>
                         <div class="info-prev">
                             <h1>
@@ -115,9 +115,9 @@ $scriptVersion = $detect->getScriptVersion();
             <ul class="container-recientes">
                 @foreach($posts as $key => $post)
                     @if($key > 2)
-                        <li>
+                        <li style="min-height: 151px">
                             <a href="{{ route('blog.getPost', ['lang' => \App::getLocale(), 'category_name' => str_slug($post->category->name), 'post_id' => $post->id]) }}" class="left pub-thumb">
-                                <img src="{{ ($post->file != "") ? $post->file->path : "/img/blog/1.jpg" }}" alt="{{ (\App::getLocale() == 'es') ? $post->title : (\App::getLocale() == 'en') ? $post->title_en : $post->title_cn }}" title="{{ (\App::getLocale() == 'es') ? $post->title : (\App::getLocale() == 'en') ? $post->title_en : $post->title_cn }}" style="min-height: 122px; max-height: 122px" />
+                                <img src="{!! config("app.url") !!}{{ ($post->file != "") ? $post->file->path : "/img/blog/1.jpg" }}" alt="{{ (\App::getLocale() == 'es') ? $post->title : (\App::getLocale() == 'en') ? $post->title_en : $post->title_cn }}" title="{{ (\App::getLocale() == 'es') ? $post->title : (\App::getLocale() == 'en') ? $post->title_en : $post->title_cn }}" style="min-height: 122px; max-height: 122px" />
                             </a>
                             <div class="right">
                                 <h1>
