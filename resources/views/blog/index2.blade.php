@@ -37,7 +37,7 @@ $scriptVersion = $detect->getScriptVersion();
     <section class="container bg-white pad-20 col-3 publicaciones-destacadas">
         <div class="max-w">
             <h2>@lang('blog.publicaciones')</h2>
-            <h3 class="txt-center txt-gray gray-title">@lang('blog.submenu_leg')</h3>
+            <h3 class="txt-center txt-gray gray-title" style="padding-top: 15px">@lang('blog.submenu_leg')</h3>
             <ul class="col-3-list list list-destacadas">
                 @foreach($leg as $key => $post)
                     <li class="list-item prev-noticia">
@@ -59,7 +59,7 @@ $scriptVersion = $detect->getScriptVersion();
                     </li>
                 @endforeach
             </ul>
-            <h3 class="txt-center txt-gray gray-title">@lang('blog.submenu_fin')</h3>
+            <h3 class="txt-center txt-gray gray-title" style="padding-top: 15px">@lang('blog.submenu_fin')</h3>
             <ul class="col-3-list list list-destacadas">
                 @foreach($fin as $key => $post)
                     <li class="list-item prev-noticia">
@@ -81,7 +81,7 @@ $scriptVersion = $detect->getScriptVersion();
                     </li>
                 @endforeach
             </ul>
-            <h3 class="txt-center txt-gray gray-title">@lang('blog.submenu_cor')</h3>
+            <h3 class="txt-center txt-gray gray-title" style="padding-top: 15px">@lang('blog.submenu_cor')</h3>
             <ul class="col-3-list list list-destacadas">
                 @foreach($cor as $key => $post)
                     <li class="list-item prev-noticia">
@@ -103,7 +103,7 @@ $scriptVersion = $detect->getScriptVersion();
                     </li>
                 @endforeach
             </ul>
-            <h3 class="txt-center txt-gray gray-title">@lang('blog.submenu_eco')</h3>
+            <h3 class="txt-center txt-gray gray-title" style="padding-top: 15px">@lang('blog.submenu_eco')</h3>
             <ul class="col-3-list list list-destacadas">
                 @foreach($eco as $key => $post)
                     <li class="list-item prev-noticia">
@@ -125,7 +125,7 @@ $scriptVersion = $detect->getScriptVersion();
                     </li>
                 @endforeach
             </ul>
-            <h3 class="txt-center txt-gray gray-title">@lang('blog.submenu_fis')</h3>
+            <h3 class="txt-center txt-gray gray-title" style="padding-top: 15px">@lang('blog.submenu_fis')</h3>
             <ul class="col-3-list list list-destacadas">
                 @foreach($fis as $key => $post)
                     <li class="list-item prev-noticia">
