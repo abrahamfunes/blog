@@ -5,7 +5,7 @@
     <meta property="og:type"          content="bc2.mx" />
     <meta property="og:title"         content="{{ $post->title }}" />
     <meta property="og:description"   content="{{ $post->title }}" />
-    <meta property="og:image"         content="http://bc2.mx{{ ($post->file) ? $post->file->path : "" }}" />
+    <meta property="og:image"         content="https://bc2.mx{{ ($post->file) ? $post->file->path : "" }}" />
 @endsection
 
 

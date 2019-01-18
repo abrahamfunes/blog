@@ -69,7 +69,7 @@
                     },{
                         "targets": 1,
                         "render": function (data, type, row, meta) {
-                            return  '<a href="/es/blog/'+row.post_id+'" target="_blank" data-toggle="tooltip" title="Ver Post">'+row.title+'</a>';
+                            return  '<a href="/es/'+row.categoryname+'/'+row.post_id+'" target="_blank" data-toggle="tooltip" title="Ver Post">'+row.title+'</a>';
                         }
                     }
                 ],

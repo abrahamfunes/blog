@@ -256,7 +256,7 @@ $scriptVersion = $detect->getScriptVersion();
                 {{--</li>--}}
                 <li class="list-item proyecto-single">
                     <a href="http://grupoavanta.mx" target="_blank">
-                        <img src="{!! config("app.url") !!}/images/logo-avanta2.png" style="height: 140px; width: 140px" alt="Avanta" title="Avanta" />
+                        <img src="{!! config("app.url") !!}/images/avanta2gray.png" alt="Avanta" title="Avanta" />
                     </a>
                 </li>
                 {{--<li class="list-item proyecto-single">--}}
